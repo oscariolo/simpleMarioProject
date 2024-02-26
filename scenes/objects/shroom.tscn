@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://cw3sdwtbm70u1"]
+
+[ext_resource type="Texture2D" uid="uid://blarm8fm7dwfl" path="res://assets/pickups/items.png" id="1_6cn0j"]
+[ext_resource type="Script" path="res://scenes/objects/shroom.gd" id="1_ftuhw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04vyb"]
+atlas = ExtResource("1_6cn0j")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w6lst"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04vyb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fe1ad"]
+size = Vector2(64, 64)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fbowq"]
+radius = 74.3128
+
+[node name="Shroom" type="CharacterBody2D" groups=["mushrooms"]]
+scale = Vector2(0.455, 0.455)
+collision_layer = 16
+collision_mask = 4
+script = ExtResource("1_ftuhw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.455, 0.455)
+sprite_frames = SubResource("SpriteFrames_w6lst")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.455, 0.455)
+shape = SubResource("RectangleShape2D_fe1ad")
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(0.455, 0.455)
+collision_layer = 16
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(0.455, 0.455)
+shape = SubResource("CircleShape2D_fbowq")
+debug_color = Color(0.729412, 0.278431, 0.945098, 0.419608)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

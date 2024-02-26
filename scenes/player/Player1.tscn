@@ -1,0 +1,183 @@
+[gd_scene load_steps=26 format=3 uid="uid://b0hggiryhm6gv"]
+
+[ext_resource type="Script" path="res://scenes/player/Player1.gd" id="1_6dh2o"]
+[ext_resource type="Texture2D" uid="uid://da0t77vh02chj" path="res://assets/player/smallmario.png" id="1_iwvkd"]
+[ext_resource type="PackedScene" uid="uid://vner76xhxn1j" path="res://scenes/objects/fireball.tscn" id="2_ys2st"]
+[ext_resource type="Texture2D" uid="uid://d03bf1tfl4tea" path="res://assets/player/SuperMarioStanding.png" id="3_6y8em"]
+[ext_resource type="Texture2D" uid="uid://usv7wktbpr4l" path="res://assets/player/FieryMarioStanding.png" id="4_i7i21"]
+[ext_resource type="Texture2D" uid="uid://dvndsubmosvnv" path="res://assets/player/MarioStanding.png" id="4_uujk5"]
+[ext_resource type="Texture2D" uid="uid://ckl32l4lejt5k" path="res://assets/player/SuperMarioJumping.png" id="5_aivlm"]
+[ext_resource type="Texture2D" uid="uid://cgwakbu4hymys" path="res://assets/player/MarioJumping.png" id="5_xoga3"]
+[ext_resource type="Texture2D" uid="uid://10l6oxdp2p5v" path="res://assets/player/Mario-0.png" id="6_28su0"]
+[ext_resource type="Texture2D" uid="uid://cpn53eo67h5dw" path="res://assets/player/SuperMario-0.png" id="6_hd88k"]
+[ext_resource type="Texture2D" uid="uid://tdcp6n2ftrf7" path="res://assets/player/SuperMario-1.png" id="7_03fbp"]
+[ext_resource type="Texture2D" uid="uid://bw1oxlrh607dv" path="res://assets/player/FieryMarioJumping.png" id="7_i4onm"]
+[ext_resource type="Texture2D" uid="uid://papsr68qudvk" path="res://assets/player/Mario-1.png" id="7_svv38"]
+[ext_resource type="Texture2D" uid="uid://q1fqf8lapqxd" path="res://assets/player/Mario-2.png" id="8_8hbpt"]
+[ext_resource type="Texture2D" uid="uid://dxkhsovw5sd06" path="res://assets/player/SuperMario-2.png" id="8_akg4c"]
+[ext_resource type="Texture2D" uid="uid://cx36eilvvmchw" path="res://assets/player/FieryMario-0.png" id="12_7y2fx"]
+[ext_resource type="Texture2D" uid="uid://beyw5ne7ai5yo" path="res://assets/player/FieryMario-1.png" id="13_83la5"]
+[ext_resource type="Texture2D" uid="uid://1i2fcg2v1gp8" path="res://assets/player/FieryMario-2.png" id="14_il1q8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bm4hs"]
+atlas = ExtResource("1_iwvkd")
+region = Rect2(144, 72, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k86gr"]
+atlas = ExtResource("4_uujk5")
+region = Rect2(0, 0, 12, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ueu8"]
+atlas = ExtResource("5_xoga3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0ob38"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bm4hs")
+}],
+"loop": true,
+"name": &"death_small",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_6y8em")
+}],
+"loop": true,
+"name": &"idle_big",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_i7i21")
+}],
+"loop": true,
+"name": &"idle_fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k86gr")
+}],
+"loop": true,
+"name": &"idle_small",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_aivlm")
+}],
+"loop": true,
+"name": &"jumping_big",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_i4onm")
+}],
+"loop": true,
+"name": &"jumping_fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ueu8")
+}],
+"loop": true,
+"name": &"jumping_small",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_hd88k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_03fbp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_akg4c")
+}],
+"loop": true,
+"name": &"walking_big",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_7y2fx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_83la5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_il1q8")
+}],
+"loop": true,
+"name": &"walking_fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_28su0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_svv38")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8hbpt")
+}],
+"loop": true,
+"name": &"walking_small",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f21e3"]
+size = Vector2(10, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_updxe"]
+size = Vector2(12, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r6swu"]
+size = Vector2(10, 18)
+
+[node name="Player1" type="CharacterBody2D" groups=["player"]]
+collision_layer = 2
+collision_mask = 28
+script = ExtResource("1_6dh2o")
+fire_ball = ExtResource("2_ys2st")
+
+[node name="Animations" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.0380003, 0.204)
+scale = Vector2(0.993667, 0.9745)
+sprite_frames = SubResource("SpriteFrames_0ob38")
+animation = &"idle_small"
+
+[node name="CollisionShape_small" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_f21e3")
+
+[node name="CollisionShape_big" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_updxe")
+disabled = true
+debug_color = Color(0.505882, 0.427451, 0.992157, 0.419608)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_bottom = 240
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 28
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_r6swu")
+debug_color = Color(0.607843, 0.533333, 0.247059, 0.419608)
+
+[node name="Invulnerable" type="Timer" parent="."]
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="timeout" from="Invulnerable" to="." method="_on_invulnerable_timeout"]

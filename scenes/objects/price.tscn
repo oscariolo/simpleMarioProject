@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://b5xk66fq0e1js"]
+
+[ext_resource type="Texture2D" uid="uid://15mfi7ot7wn5" path="res://assets/blocks/SignBlocks.png" id="1_jiuw4"]
+[ext_resource type="Script" path="res://scenes/objects/price.gd" id="1_y747y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hw1r"]
+atlas = ExtResource("1_jiuw4")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4v3k"]
+atlas = ExtResource("1_jiuw4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xq07r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hw1r")
+}],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4v3k")
+}],
+"loop": true,
+"name": &"item",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k1b5n"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nc4th"]
+size = Vector2(16, 1)
+
+[node name="Price" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_y747y")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xq07r")
+animation = &"item"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_k1b5n")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, 8.5)
+shape = SubResource("RectangleShape2D_nc4th")
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

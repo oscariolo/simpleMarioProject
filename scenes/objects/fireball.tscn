@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://vner76xhxn1j"]
+
+[ext_resource type="Texture2D" uid="uid://0g4o8movyf2h" path="res://assets/throwables/FireBall-0.png" id="1_0fs54"]
+[ext_resource type="Script" path="res://scenes/objects/fireball.gd" id="1_epx1h"]
+[ext_resource type="Texture2D" uid="uid://c3pigdk6i8ij3" path="res://assets/throwables/FireBall-1.png" id="2_c0uyu"]
+[ext_resource type="Texture2D" uid="uid://b4jygwkr52eub" path="res://assets/throwables/FireBall-2.png" id="3_cgf2w"]
+[ext_resource type="Texture2D" uid="uid://dca36qtbbtwby" path="res://assets/throwables/FireBall-3.png" id="4_ne54d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5d6pa"]
+radius = 4.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q6hfy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_0fs54")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_c0uyu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cgf2w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ne54d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a4hpl"]
+radius = 8.0
+
+[node name="fireball" type="CharacterBody2D" groups=["throwable"]]
+collision_layer = 32
+collision_mask = 12
+script = ExtResource("1_epx1h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5d6pa")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_q6hfy")
+autoplay = "default"
+frame_progress = 0.153445
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 13
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_a4hpl")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

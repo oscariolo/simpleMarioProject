@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://counlv7k5ky8d"]
+
+[ext_resource type="Texture2D" uid="uid://b1yaf481m167e" path="res://assets/blocks/Pipes.png" id="1_1sjrb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d4ttt"]
+size = Vector2(32, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_koowf"]
+size = Vector2(32, 64)
+
+[node name="Pipe" type="StaticBody2D" groups=["walls"]]
+collision_layer = 4
+collision_mask = 26
+
+[node name="Pipes" type="Sprite2D" parent="."]
+texture = ExtResource("1_1sjrb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_d4ttt")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 24
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_koowf")
