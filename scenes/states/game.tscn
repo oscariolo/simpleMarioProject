@@ -499,4 +499,19 @@ layer_0/tile_data = PackedInt32Array(851968, 0, 0, 917504, 0, 0, 851969, 0, 0, 9
 [node name="Goomba" parent="." instance=ExtResource("13_dx0px")]
 position = Vector2(152, 184)
 
+[node name="Goomba2" parent="." instance=ExtResource("13_dx0px")]
+position = Vector2(546, 192)
+
+[node name="Goomba3" parent="." instance=ExtResource("13_dx0px")]
+position = Vector2(845, 167)
+
+[node name="Goomba4" parent="." instance=ExtResource("13_dx0px")]
+position = Vector2(1388, 61)
+
+[node name="Goomba5" parent="." instance=ExtResource("13_dx0px")]
+position = Vector2(1624, 132)
+
+[node name="Goomba6" parent="." instance=ExtResource("13_dx0px")]
+position = Vector2(2018, 195)
+
 [connection signal="hurt_player" from="Goomba" to="Player1" method="_on_goomba_hurt_player"]
